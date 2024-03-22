@@ -1,10 +1,10 @@
-const json = require('./proxies (1).json')
+const json = require('./proxies_pretty.json')
 
 const asu = []
 
 for (each of json) {
-    if (each.type === 'socks5' && each.country === "United States of America") {
-        asu.push(`socks5://${each.ip}:${each.port}`)
+    if (each.username === null && each.password === null) {
+        asu.push(`${each.protocol}://${each.host}:${each.port}`)
     }
 }
 
