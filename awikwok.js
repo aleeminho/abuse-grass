@@ -1,20 +1,12 @@
-const json = require('./anjay.json')
+const json = require('./proxies (1).json')
 
 const asu = []
 
 for (each of json) {
-    if (each.protocol === 'socks5' && each.geolocation.country.iso_code === "US") {
-        asu.push(each)
+    if (each.type === 'socks5' && each.country === "United States of America") {
+        asu.push(`socks5://${each.ip}:${each.port}`)
     }
 }
 
-const template = []
-
-for (each of asu) {
-    let username = each.username === null ? '' : username
-    let password = each.password === null ? '' : password
-    template.push(`socks5://${each.host}:${each.port}`)
-}
-
-console.log(template)
+console.dir(asu, {'maxArrayLength': null})
 
